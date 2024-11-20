@@ -1,4 +1,9 @@
+import Image from "next/image";
 import "./globals.css";
+
+
+import goTop from '../assets/svg/arrow-top.svg'
+import goBottom from '../assets/svg/arrow-bottom.svg'
 
 
 export const metadata = {
@@ -10,7 +15,31 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className="relative">
+        <div
+          className='
+          fixed bottom-5 left-0 md:left-5 
+          flex gap-x-5 justify-center items-center 
+          h-[100px] w-[100px] z-40'>
+          <Image
+            src={goTop}
+            alt="goTop"
+            className="
+          h-[80px] w-[20px]
+          md:h-[100px]
+          cursor-pointer 
+          transition-all duration-500 hover:-translate-y-5" />
+
+          <Image
+            src={goBottom}
+            alt="goBottom"
+            className="
+          h-[80px] w-[20px]
+          md:h-[100px]
+          cursor-pointer 
+          transition-all duration-500 hover:translate-y-5" />
+
+        </div>
         {children}
       </body>
     </html>
