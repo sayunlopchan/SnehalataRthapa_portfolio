@@ -1,0 +1,54 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"); */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Outfit";
+  src: url("/fonts/Outfit/Outfit-Regular.ttf") format("truetype"),
+    url("/fonts/Outfit/Outfit-Medium.ttf") format("truetype"),
+    url("/fonts/Outfit/Outfit-SemiBold.ttf") format("truetype"),
+    url("/fonts/Outfit/Outfit-Bold.ttf") format("truetype"),
+    url("/fonts/Outfit/Outfit-ExtraBold.ttf") format("truetype"),
+    url("/fonts/Outfit/Outfit-Black.ttf") format("truetype"),
+    url("/fonts/Outfit/Outfit-ExtraLight.ttf") format("truetype"),
+    url("/fonts/Outfit/Outfit-Light.ttf") format("truetype"),
+    url("/fonts/Outfit/Outfit-Thin.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --main-text: #000000;
+  --secondary-text: #3c3c3c;
+
+  /* image base */
+  --image-base-hero-1: #9bb1ec;
+  --image-base-hero-2: #3a1f0a;
+  --image-base-about: #201010;
+  --image-base-contact: #183553;
+  --image-base-footer: #353a24;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  max-width: 1536px;
+  margin: 0 auto;
+  font-family: "Outfit", serif, Arial, Helvetica, sans-serif;
+}
+
+.underSlide {
+}
