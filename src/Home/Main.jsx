@@ -23,7 +23,7 @@ const Main = ({ sectionsRef }) => {
       {isLoading ? (
         <Welcome />
       ) : (
-        <div className="px-5 md:space-y-5 lg:px-10 bg-red-400">
+        <div className="md:space-y-5 bg-red-400">
           <Navigation />
           <Hero ref={(el) => (sectionsRef.current[0] = el)} />
           <Introduction ref={(el) => (sectionsRef.current[1] = el)} />

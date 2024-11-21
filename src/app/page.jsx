@@ -30,7 +30,7 @@ const Page = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative px-5 lg:px-10">
       {/* Pass refs to the Main component */}
       <Main sectionsRef={sections} />
       <div
