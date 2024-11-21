@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { GiHamburgerMenu } from "react-icons/gi";
 
 
 const Navigation = () => {
+
+  const [openNav, setOpenNav] = useState(false);
+
+  const handleOpen = () => {
+    setOpenNav(prev => !prev);
+  };
+
+
   return (
     <div className='flex justify-between md:px-5 h-10 items-center sticky top-0 z-50 py-8 lg:py-5 '>
 
@@ -14,7 +22,12 @@ const Navigation = () => {
         <a href="#Contact">Contact</a>
       </div>
       <div className='p-5 md:hidden '>
-        <GiHamburgerMenu size={40} />
+        <GiHamburgerMenu size={40} onClick={handleOpen} />
+        {
+          openNav && <div className='bg-white'>
+            hello
+          </div>
+        }
       </div>
 
 
