@@ -98,5 +98,5 @@ const Contact = forwardRef((props, ref) => {
     </div>
   )
 });
-
+Contact.displayName = 'Contact';
 export default Contact

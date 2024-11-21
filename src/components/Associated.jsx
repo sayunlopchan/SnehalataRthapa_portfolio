@@ -107,4 +107,5 @@ const Associated = forwardRef((props, ref) => {
   );
 });
 
+Associated.displayName = 'Associated';
 export default Associated;

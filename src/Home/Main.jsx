@@ -14,8 +14,8 @@ const Main = ({ sectionsRef }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000); // Simulate 3-second loading
-    return () => clearTimeout(timer); // Cleanup the timer on component unmount
+    }, 3000);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -23,7 +23,7 @@ const Main = ({ sectionsRef }) => {
       {isLoading ? (
         <Welcome />
       ) : (
-        <div className="px-5 md:space-y-5 lg:px-10">
+        <div className="px-5 md:space-y-5 lg:px-10 bg-red-400">
           <Navigation />
           <Hero ref={(el) => (sectionsRef.current[0] = el)} />
           <Introduction ref={(el) => (sectionsRef.current[1] = el)} />

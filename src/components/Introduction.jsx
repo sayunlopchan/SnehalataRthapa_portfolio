@@ -40,5 +40,5 @@ const Introduction = forwardRef((props, ref) => {
     </div>
   )
 })
-
+Introduction.displayName = 'Introduction';
 export default Introduction

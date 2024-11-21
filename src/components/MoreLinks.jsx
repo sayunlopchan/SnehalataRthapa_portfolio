@@ -77,4 +77,5 @@ const MoreLinks = forwardRef((props, ref) => {
   )
 })
 
+MoreLinks.displayName = 'MoreLinks';
 export default MoreLinks

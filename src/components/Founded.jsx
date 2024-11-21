@@ -77,4 +77,5 @@ const Founded = forwardRef((props, ref) => {
   );
 });
 
+Founded.displayName = 'Founded';
 export default Founded;

@@ -21,5 +21,5 @@ const Navigation = () => {
     </div>
   )
 }
-
+Navigation.displayName = 'Navigation';
 export default Navigation
