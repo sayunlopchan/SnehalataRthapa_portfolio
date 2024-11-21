@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import Image from "next/image";
 
 import rotaryClubLogo from "../assets/AssociatedClubs/rotary-yellow-kathmandu.png";
@@ -6,9 +6,9 @@ import toastmasterClubLogo from "../assets/AssociatedClubs/Toastmasters Club-nep
 import lionsClubLogo from "../assets/AssociatedClubs/Lions_Clubs_International_logo.svg.png";
 import kiwabisClubOfRupandehi from "../assets/AssociatedClubs/Kiwanis Club of Rupandehi Lumbini.png";
 
-const Associated = () => {
+const Associated = forwardRef((props, ref) => {
   return (
-    <div className="lg:h-[600px]  pb-10">
+    <div ref={ref} className="lg:h-[600px]  pb-10">
       <h2 className="font-bold text-2xl my-5 uppercase">Associated</h2>
 
       <div
@@ -105,6 +105,6 @@ const Associated = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Associated;

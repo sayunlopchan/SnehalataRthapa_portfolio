@@ -50,5 +50,75 @@ body {
   font-family: "Outfit", serif, Arial, Helvetica, sans-serif;
 }
 
-.underSlide {
+/* CSS keyframes */
+@keyframes popAndExpand {
+  0% {
+    width: 0px;
+    height: 0px;
+  }
+  20% {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+  }
+  35% {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+  }
+  100% {
+    width: 10000px;
+    height: 10000px;
+  }
+}
+
+@keyframes textShow {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0;
+  }
+  35% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Example circle */
+.circle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.circle-box {
+  background: whitesmoke;
+  animation: popAndExpand 5s ease-in-out forwards;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.welcomeTxt {
+  font-size: 24px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  animation: textShow 7s ease-in-out forwards;
 }

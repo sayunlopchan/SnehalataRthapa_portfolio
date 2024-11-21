@@ -1,14 +1,14 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { forwardRef } from "react";
 
 
 import IntroductionImage from '../assets/user-images/introduction-image-1.jpg'
 
 
 
-const Introduction = () => {
+const Introduction = forwardRef((props, ref) => {
   return (
-    <div>
+    <div ref={ref}>
       <h2 className='font-bold text-2xl my-5 uppercase'>Introduction</h2>
       <div className='grid grid-cols-1 md:grid-cols-7 py-5'>
         <section className='col-span-4 order-2 md:order-none p-10'>
@@ -39,6 +39,6 @@ const Introduction = () => {
       </div>
     </div>
   )
-}
+})
 
 export default Introduction

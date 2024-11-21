@@ -1,13 +1,13 @@
-import React from "react";
+import React, { forwardRef } from "react";
 
 import sparkleKidsAcadamyLogo from "../assets/FoundedOrg/Sparkle_Kids_Academy.jpg";
 import cultivateYourCanvaLogo from "../assets/FoundedOrg/cultivate_your_canvas.png";
 import snehYogaCenterLogo from "../assets/FoundedOrg/Sneh_yoga_center.png";
 import Image from "next/image";
 
-const Founded = () => {
+const Founded = forwardRef((props, ref) => {
   return (
-    <div className="lg:h-[600px]  pb-10">
+    <div ref={ref} className="lg:h-[600px]  pb-10">
       <h2 className="font-bold text-2xl my-5 uppercase">Founded</h2>
 
       <div className="flex flex-col lg:flex-row flex-wrap gap-5 justify-center items-center ">
@@ -75,6 +75,6 @@ const Founded = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Founded;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from "react";
 import Image from 'next/image'
 
 
@@ -8,9 +8,9 @@ import heroImage2 from '../assets/user-images/hero-image-2.jpg'
 
 
 
-const Hero = () => {
+const Hero = forwardRef((props, ref) => {
   return (
-    <div>
+    <div ref={ref}>
       <section className='h-full xl:h-[610px] grid grid-cols-1 md:grid-cols-3'>
 
 
@@ -177,6 +177,6 @@ const Hero = () => {
       </section>
     </div>
   )
-}
+})
 
 export default Hero

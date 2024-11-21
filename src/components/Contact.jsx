@@ -1,12 +1,13 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { forwardRef } from "react";
 
 
 import image from '../assets/user-images/user-image-6.jpg'
 
-const Contact = () => {
+const Contact = forwardRef((props, ref) => {
   return (
     <div
+      ref={ref}
       className='mb-20'>
       <h2 className='font-bold text-2xl my-3 uppercase'>Contact</h2>
 
@@ -96,6 +97,6 @@ const Contact = () => {
       </div>
     </div>
   )
-}
+});
 
 export default Contact

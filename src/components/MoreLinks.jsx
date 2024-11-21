@@ -1,14 +1,14 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { forwardRef } from "react";
 
 import footerImageOne from '../assets/user-images/footer-image-1.jpg'
 import footerImageTwo from '../assets/user-images/footer-image-2.jpg'
 
 
-const MoreLinks = () => {
+const MoreLinks = forwardRef((props, ref) => {
   return (
-    <div className='pb-10'>
+    <div ref={ref} className='pb-10'>
       <h2 className='font-bold text-2xl my-3 uppercase'>More Links</h2>
       <div className='grid grid-cols-1 lg:grid-cols-5 max-md:gap-y-5'>
 
@@ -75,6 +75,6 @@ const MoreLinks = () => {
       </div>
     </div>
   )
-}
+})
 
 export default MoreLinks
