@@ -7,6 +7,8 @@ import goTop from "../assets/svg/arrow-top.svg";
 import goBottom from "../assets/svg/arrow-bottom.svg";
 
 const Page = () => {
+
+  // pre Loading
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -16,6 +18,10 @@ const Page = () => {
     return () => clearTimeout(timer);
   }, []);
 
+
+
+
+  // buttons
   const sections = useRef([]);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -63,8 +69,8 @@ const Page = () => {
               onClick={clickDown}
               disabled={activeIndex === sections.current.length - 1} // Disable goDown when at the last section
               className={`${activeIndex === sections.current.length - 1
-                  ? "opacity-50 cursor-not-allowed"
-                  : "opacity-100"
+                ? "opacity-50 cursor-not-allowed"
+                : "opacity-100"
                 }`}
             >
               <Image

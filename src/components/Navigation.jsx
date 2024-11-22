@@ -15,6 +15,7 @@ const Navigation = () => {
     <div className='flex justify-between md:px-5 h-10 items-center sticky top-0 z-50 py-8 lg:py-5 '>
 
       <div className='bg-transparent'></div>
+
       <div className='space-x-4 max-md:hidden'>
         <Link href={''}>About</Link>
         <Link href={''}>Achivements</Link>
