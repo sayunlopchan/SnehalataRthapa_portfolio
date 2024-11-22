@@ -17,10 +17,10 @@ const Navigation = () => {
       <div className='bg-transparent'></div>
 
       <div className='space-x-4 max-md:hidden'>
-        <Link href={''}>About</Link>
-        <Link href={''}>Achivements</Link>
-        <Link href={''}>Blog</Link>
-        <Link href={''}>Contact</Link>
+        <Link href={'/about'}>About</Link>
+        <Link href={'/achivements'}>Achivements</Link>
+        <Link href={'/blog'}>Blog</Link>
+        <Link href={'/contact'}>Contact</Link>
       </div>
 
       <div className='order-2 p-5 md:hidden'>
