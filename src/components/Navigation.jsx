@@ -1,5 +1,5 @@
+import Link from 'next/link';
 import React, { useState } from 'react'
-import { GiHamburgerMenu } from "react-icons/gi";
 
 
 const Navigation = () => {
@@ -16,22 +16,35 @@ const Navigation = () => {
 
       <div className='bg-transparent'></div>
       <div className='space-x-4 max-md:hidden'>
-        <a href="#About">About</a>
-        <a href="#Achivements">Achivements</a>
-        <a href="#Blog">Blog</a>
-        <a href="#Contact">Contact</a>
+        <Link href={''}>About</Link>
+        <Link href={''}>Achivements</Link>
+        <Link href={''}>Blog</Link>
+        <Link href={''}>Contact</Link>
       </div>
-      <div className='p-5 md:hidden '>
-        <GiHamburgerMenu size={40} onClick={handleOpen} />
-        {
-          openNav && <div className='bg-white'>
-            hello
-          </div>
-        }
+
+      <div className='order-2 p-5 md:hidden'>
+        <div className='flex flex-col gap-1' onClick={handleOpen}>
+          <span className={`transition-all duration-300  border-2 border-black w-9 bg-black ${openNav ? 'rotate-[-30deg] ' : ''}`}></span>
+          <span className={`transition-all duration-300  border-2 border-black w-9 bg-black ${openNav ? 'rotate-[30deg]' : ''}`}></span>
+          <span className={`transition-all duration-300  border-2 border-black w-9 bg-black ${openNav ? ' rotate-[-30deg] ' : ''}`}></span>
+        </div>
+      </div>
+
+      <div
+        className={`order-1 md:hidden transition-all duration-300 w-full bg-b/50 backdrop-blur-lg p-5  ${openNav ? 'translate-y-0' : '-translate-y-20'
+          }`}
+      >
+        <ul className='grid grid-cols-2'>
+          <Link href={''}>About</Link>
+          <Link href={''}>Achivements</Link>
+          <Link href={''}>Blog</Link>
+          <Link href={''}>Contact</Link>
+        </ul>
       </div>
 
 
-    </div>
+
+    </div >
   )
 }
 Navigation.displayName = 'Navigation';

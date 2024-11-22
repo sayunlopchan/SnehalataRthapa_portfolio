@@ -28,13 +28,11 @@ const Associated = forwardRef((props, ref) => {
           hover:border 
         "
         >
-          <a href="">
-            <Image
-              src={rotaryClubLogo}
-              alt="Sparkle kids academy"
-              className="object-cover"
-            />
-          </a>
+          <Image
+            src={rotaryClubLogo}
+            alt="Sparkle kids academy"
+            className="object-cover"
+          />
         </div>
         <div
           className="
@@ -44,13 +42,11 @@ const Associated = forwardRef((props, ref) => {
           hover:border
           "
         >
-          <a href="">
-            <Image
-              src={toastmasterClubLogo}
-              alt="Sparkle kids academy"
-              className="object-cover"
-            />
-          </a>
+          <Image
+            src={toastmasterClubLogo}
+            alt="Sparkle kids academy"
+            className="object-cover"
+          />
         </div>
         <div
           className="
@@ -60,13 +56,11 @@ const Associated = forwardRef((props, ref) => {
           hover:border 
         "
         >
-          <a href="">
-            <Image
-              src={lionsClubLogo}
-              alt="Sparkle kids academy"
-              className="object-cover"
-            />
-          </a>
+          <Image
+            src={lionsClubLogo}
+            alt="Sparkle kids academy"
+            className="object-cover"
+          />
         </div>
         <div
           className="
@@ -76,13 +70,11 @@ const Associated = forwardRef((props, ref) => {
           hover:border
           "
         >
-          <a href="">
-            <Image
-              src={kiwabisClubOfRupandehi}
-              alt="Sparkle kids academy"
-              className="object-cover"
-            />
-          </a>
+          <Image
+            src={kiwabisClubOfRupandehi}
+            alt="Sparkle kids academy"
+            className="object-cover"
+          />
         </div>
       </div>
 
@@ -107,5 +99,5 @@ const Associated = forwardRef((props, ref) => {
   );
 });
 
-Associated.displayName = 'Associated';
+Associated.displayName = "Associated";
 export default Associated;
