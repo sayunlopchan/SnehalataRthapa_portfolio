@@ -12,7 +12,7 @@ const Introduction = forwardRef((props, ref) => {
       <h2 className='font-bold text-2xl my-5 uppercase'>Introduction</h2>
       <div className='grid grid-cols-1 md:grid-cols-7 py-5'>
         <section className='col-span-4 order-2 md:order-none p-10'>
-          <p className='lg:text-lg xl:text-xl 2xl:text-2xl max-md:text-center'>
+          <p className='lg:text-lg xl:text-xl 2xl:text-2xl max-md:text-center' style={{ color: "var(--secondary-text)" }}>
             An instructor, entrepreneur, life skills trainer, and founder of  Cultivate Your Canvas, Sparkle Kids Academy, and Sneh Studio Yoga Center, I am passionate about uplifting my community. Through my work, I empower individuals to reach their full potential. My involvement in various clubs and community projects reflects my commitment to personal growth, leadership, and lasting positive impact.
           </p>
         </section>

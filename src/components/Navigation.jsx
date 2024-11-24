@@ -16,9 +16,9 @@ const Navigation = () => {
 
       <div className='bg-transparent'></div>
 
-      <div className='space-x-4 max-md:hidden'>
+      <div className='space-x-4 max-md:hidden' style={{ color: "var(--secondary-text)" }}>
         <Link href={'/about'}>About</Link>
-        <Link href={'/achivements'}>Achivements</Link>
+        <Link href={'/gallery'}>Gallery</Link>
         <Link href={'/blog'}>Blog</Link>
         <Link href={'/contact'}>Contact</Link>
       </div>
@@ -35,11 +35,11 @@ const Navigation = () => {
         className={`order-1 md:hidden transition-all duration-300 w-full bg-b/50 backdrop-blur-lg p-5  ${openNav ? 'translate-y-0' : '-translate-y-20'
           }`}
       >
-        <ul className='grid grid-cols-2'>
-          <Link href={''}>About</Link>
-          <Link href={''}>Achivements</Link>
-          <Link href={''}>Blog</Link>
-          <Link href={''}>Contact</Link>
+        <ul className='grid grid-cols-2' style={{ color: "var(--secondary-text)" }}>
+          <Link href={'/about'}>About</Link>
+          <Link href={'/gallery'}>Gallery</Link>
+          <Link href={'/blog'}>Blog</Link>
+          <Link href={'/contact'}>Contact</Link>
         </ul>
       </div>
 
