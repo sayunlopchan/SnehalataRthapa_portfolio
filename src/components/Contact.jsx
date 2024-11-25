@@ -40,10 +40,10 @@ const Contact = forwardRef((props, ref) => {
       // Use EmailJS to send the form data
       emailjs
         .send(
-          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+          process.env.EMAILJS_SERVICE_ID,
+          process.env.EMAILJS_TEMPLATE_ID,
           values, // The form values object
-          process.env.NEXT_PUBLIC_EMAILJS_USER_ID // Your EmailJS user ID
+          process.env.EMAILJS_USER_ID // Your EmailJS user ID
         )
         .then((response) => {
           console.log('Email sent successfully', response);
