@@ -19,7 +19,7 @@ const Contact = forwardRef((props, ref) => {
   const validationSchema = Yup.object({
     fullName: Yup.string()
       .min(3, 'Full name must be at least 3 characters')
-      .max(50, 'Full name must not exceed 50 characters')
+      .max(30, 'Full name must not exceed 30 characters')
       .required('Full name is required'),
     email: Yup.string()
       .email('Invalid email address')
