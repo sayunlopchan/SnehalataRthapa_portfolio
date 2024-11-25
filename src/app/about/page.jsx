@@ -12,11 +12,11 @@ const page = () => {
     <div className="px-5 space-y-10">
       <nav className="w-full flex justify-center items-center">
         <ul className="flex gap-x-5 mt-5" style={{ color: "var(--secondary-text)" }}>
-          <li><Link href={'/'} >Home</Link></li>
-          <li><Link href={'/about'} >About</Link></li>
-          <li><Link href={'/gallery'} >Gallery</Link></li>
-          <li><Link href={'/blog'} >Blog</Link></li>
-          <li><Link href={'/contact'} >Contact</Link></li>
+          <li><Link href={'/'} className='hover-border' >Home</Link></li>
+          <li><Link href={'/about'} className='active hover-border' >About</Link></li>
+          <li><Link href={'/gallery'} className='hover-border'>Gallery</Link></li>
+          <li><Link href={'/blog'} className='hover-border'>Blog</Link></li>
+          <li><Link href={'/contact'} className='hover-border'>Contact</Link></li>
         </ul>
       </nav>
 
@@ -88,7 +88,7 @@ const page = () => {
 
       {/*Achivements Timeline */}
       <div className="space-y-10 lg:m-10">
-        <h2 className="font-bold text-2xl my-5 uppercase">Achivements</h2>
+        <h2 className="font-bold text-2xl my-5 uppercase">Achievements</h2>
 
         {/* One */}
         <div className="grid grid-cols-1 md:grid-cols-2 max-md:space-y-10 max-md:py-10">

@@ -17,10 +17,10 @@ const Navigation = () => {
       <div className='bg-transparent'></div>
 
       <div className='space-x-4 max-md:hidden' style={{ color: "var(--secondary-text)" }}>
-        <Link href={'/about'}>About</Link>
-        <Link href={'/gallery'}>Gallery</Link>
-        <Link href={'/blog'}>Blog</Link>
-        <Link href={'/contact'}>Contact</Link>
+        <Link href={'/about'} className='hover-border-inline'>About</Link>
+        <Link href={'/gallery'} className='hover-border-inline'>Gallery</Link>
+        <Link href={'/blog'} className='hover-border-inline'>Blog</Link>
+        <Link href={'/contact'} className='hover-border-inline'>Contact</Link>
       </div>
 
       <div className='order-2 p-5 md:hidden'>
@@ -36,10 +36,10 @@ const Navigation = () => {
           }`}
       >
         <ul className='grid grid-cols-2' style={{ color: "var(--secondary-text)" }}>
-          <Link href={'/about'}>About</Link>
-          <Link href={'/gallery'}>Gallery</Link>
-          <Link href={'/blog'}>Blog</Link>
-          <Link href={'/contact'}>Contact</Link>
+          <Link href={'/about'} className='hover-border'>About</Link>
+          <Link href={'/gallery'} className='hover-border'>Gallery</Link>
+          <Link href={'/blog'} className='hover-border'>Blog</Link>
+          <Link href={'/contact'} className='hover-border'>Contact</Link>
         </ul>
       </div>
 

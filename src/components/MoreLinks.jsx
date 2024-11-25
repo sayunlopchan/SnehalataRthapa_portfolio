@@ -15,11 +15,10 @@ const MoreLinks = forwardRef((props, ref) => {
         <section className=' col-span-2 lg:col-span-1'>
           <h2 className='font-semibold'>Links-</h2>
           <ul style={{ color: "var(--secondary-text)" }}>
-            <li><Link href={'/'}>Gallary</Link></li>
-            <li><Link href={'/'}>About Me</Link></li>
-            <li><Link href={'/'}>Achivements</Link></li>
-            <li><Link href={'/'}>Founded</Link></li>
-            <li><Link href={'/'}>Associated</Link></li>
+            <li><Link href={'/about'}>About Me</Link></li>
+            <li><Link href={'/gallary'}>Gallary</Link></li>
+            <li><Link href={'/blog'}>Blog</Link></li>
+            <li><Link href={'/contact'}>Contact</Link></li>
           </ul>
         </section>
 

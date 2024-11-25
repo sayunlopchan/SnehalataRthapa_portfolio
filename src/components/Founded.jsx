@@ -63,10 +63,10 @@ const Founded = forwardRef((props, ref) => {
           style={{ color: "var(--secondary-text)" }}>
           {/* adding underline animating when hover using before after */}
           <li>
-            <a href="">Sparkke kids acadamy</a>
+            <a href="">Sparkle kids academy</a>
           </li>
           <li>
-            <a href="">Cultivate your canva</a>
+            <a href="">Cultivate your canvas</a>
           </li>
           <li>
             <a href="">Sneh yoga center</a>

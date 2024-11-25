@@ -166,9 +166,9 @@ const Hero = forwardRef((props, ref) => {
               2xl:text-lg
               `}
               style={{ color: "var(--secondary-text)" }}>
-              <li>Mrs Bhairahawa 2019</li>
-              <li>Mrs Nepal International 2nd Runnerup 2019</li>
-              <li>Award winner at TKS Mrs. International 2019</li>
+              <li>Mrs. Bhairahawa 2019</li>
+              <li>Mrs. Nepal International 2nd Runner-up 2019</li>
+              <li>Award Winner at TKS Mrs. International 2019</li>
               <li>Certified Life Skills and Leadership Trainer</li>
             </ul>
           </div>
