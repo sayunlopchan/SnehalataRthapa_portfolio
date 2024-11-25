@@ -5,11 +5,28 @@ import Image from 'next/image';
 import emailjs from 'emailjs-com';
 import image from '../assets/user-images/user-image-6.jpg';
 
+
+import Dialog from '../components/Dialog';
+
+
+
 const Contact = forwardRef((props, ref) => {
+  const [isDialogOpen, setIsDialogOpen] = React.useState(false);
+  const [dialogMessage, setDialogMessage] = React.useState('');
+  const [dialogType, setDialogType] = React.useState('');
+
+  // Yup validation schema
   const validationSchema = Yup.object({
-    fullName: Yup.string().required('Full Name is required'),
-    email: Yup.string().email('Invalid email address').required('Email is required'),
-    message: Yup.string().required('Message is required')
+    fullName: Yup.string()
+      .min(3, 'Full name must be at least 3 characters')
+      .max(50, 'Full name must not exceed 50 characters')
+      .required('Full name is required'),
+    email: Yup.string()
+      .email('Invalid email address')
+      .required('Email is required'),
+    message: Yup.string()
+      .min(10, 'Message must be at least 10 characters')
+      .required('Message is required')
   });
 
   const formik = useFormik({
@@ -18,36 +35,29 @@ const Contact = forwardRef((props, ref) => {
       email: '',
       message: ''
     },
-    validationSchema: validationSchema,
-    onSubmit: (values, { setSubmitting, resetForm }) => {
-      setSubmitting(true);
-
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-      const userId = process.env.NEXT_PUBLIC_EMAILJS_USER_ID;
-
-      const templateParams = {
-        from_name: values.fullName,
-        fullName: values.fullName,
-        email: values.email,
-        message: values.message,
-      };
-
+    validationSchema, // Apply validation schema here
+    onSubmit: (values, { resetForm }) => {
+      // Use EmailJS to send the form data
       emailjs
-        .send(serviceId, templateId, templateParams, userId)
-        .then(
-          (result) => {
-            console.log('Success:', result.text);
-            alert('Message sent successfully!');
-            resetForm(); // Reset form after successful submission
-            setSubmitting(false);
-          },
-          (error) => {
-            console.log('Error:', error.text);
-            alert('Something went wrong, please try again later!');
-            setSubmitting(false);
-          }
-        );
+        .send(
+          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+          values, // The form values object
+          process.env.NEXT_PUBLIC_EMAILJS_USER_ID // Your EmailJS user ID
+        )
+        .then((response) => {
+          console.log('Email sent successfully', response);
+          setDialogMessage('Message sent successfully!');
+          setDialogType('success');
+          setIsDialogOpen(true);
+          resetForm(); // Reset form fields after submission
+        })
+        .catch((error) => {
+          console.error('Email sending failed', error);
+          setDialogMessage('Failed to send message. Please try again later.');
+          setDialogType('error');
+          setIsDialogOpen(true);
+        });
     }
   });
 
@@ -73,7 +83,7 @@ const Contact = forwardRef((props, ref) => {
         </div>
 
         <div className="col-span-1 order-1 lg:order-none p-2">
-          <form className="p-6 w-full max-w-md mx-auto" onSubmit={formik.handleSubmit}>
+          <form onSubmit={formik.handleSubmit} className="p-6 w-full max-w-md mx-auto">
             <label className="block mb-4">
               <span className="text-gray-700 font-medium">Full Name</span>
               <input
@@ -85,9 +95,9 @@ const Contact = forwardRef((props, ref) => {
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-300 focus:outline-none"
                 placeholder="Enter your full name"
               />
-              {formik.touched.fullName && formik.errors.fullName ? (
+              {formik.touched.fullName && formik.errors.fullName && (
                 <div className="text-red-500 text-sm">{formik.errors.fullName}</div>
-              ) : null}
+              )}
             </label>
 
             <label className="block mb-4">
@@ -101,9 +111,9 @@ const Contact = forwardRef((props, ref) => {
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-300 focus:outline-none"
                 placeholder="Enter your email"
               />
-              {formik.touched.email && formik.errors.email ? (
+              {formik.touched.email && formik.errors.email && (
                 <div className="text-red-500 text-sm">{formik.errors.email}</div>
-              ) : null}
+              )}
             </label>
 
             <label className="block mb-4">
@@ -117,20 +127,30 @@ const Contact = forwardRef((props, ref) => {
                 placeholder="Enter your message"
                 rows="4"
               />
-              {formik.touched.message && formik.errors.message ? (
+              {formik.touched.message && formik.errors.message && (
                 <div className="text-red-500 text-sm">{formik.errors.message}</div>
-              ) : null}
+              )}
             </label>
 
-            <button
-              type="submit"
-              className={`w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:ring focus:ring-blue-300 focus:outline-none font-medium ${formik.isSubmitting && 'opacity-50 cursor-not-allowed'}`}
-              disabled={formik.isSubmitting}
-            >
-              {formik.isSubmitting ? 'Submitting...' : 'Submit'}
-            </button>
+            <div className="flex gap-4">
+              <button
+                type="submit"
+                className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:ring focus:ring-blue-300 focus:outline-none font-medium"
+                disabled={formik.isSubmitting}
+              >
+                {formik.isSubmitting ? 'Submitting...' : 'Submit'}
+              </button>
+            </div>
           </form>
+          {formik.status && <p className="text-center text-lg mt-4">{formik.status}</p>}
         </div>
+        {/* Dialog Component for success or error message */}
+        <Dialog
+          isOpen={isDialogOpen}
+          onClose={() => setIsDialogOpen(false)}
+          message={dialogMessage}
+          type={dialogType}
+        />
       </div>
     </div>
   );
