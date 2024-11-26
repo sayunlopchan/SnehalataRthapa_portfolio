@@ -1,24 +1,25 @@
 import Link from 'next/link'
 import React from 'react'
-
 import { client } from '../../lib/contentfulClient';
 import Image from 'next/image';
 
+// Fetch all blog posts
 const fetchBlogPosts = async () => {
   try {
     const response = await client.getEntries({
-      content_type: 'sayunPosts', // Replace with your content type ID
+      content_type: 'sayunPosts',
     });
 
-    return response.items; // Returns the blog post items
+    return response.items;
   } catch (error) {
     console.error('Error fetching blog posts:', error);
-    return []; // Fallback to an empty array in case of error
+    return [];
   }
 };
 
 const page = async () => {
   const blogPosts = await fetchBlogPosts();
+
   return (
     <div>
       <nav className="w-full flex justify-center items-center">
@@ -35,8 +36,7 @@ const page = async () => {
         <h1>Blog Posts</h1>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-5 place-items-center p-10'>
           {blogPosts.map((post) => (
-            <Link href={`/blog/${post.fields.slug}`}
-              key={post.sys.id}>
+            <Link href={`/blog/${post.fields.slug}`} key={post.sys.id}>
               <div
                 className='
                 h-full w-full
@@ -59,11 +59,7 @@ const page = async () => {
 
                 {/* Title */}
                 <div className='absolute left-0 bottom-0 p-4 text-white'>
-                  <h3>
-
-                    {post.fields.title}
-
-                  </h3>
+                  <h3>{post.fields.title}</h3>
                 </div>
               </div>
             </Link>
@@ -71,7 +67,7 @@ const page = async () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default page;

@@ -1,5 +1,3 @@
-// lib/contentfulClient.js
-
 import { createClient } from 'contentful';
 
 // Create a Contentful client

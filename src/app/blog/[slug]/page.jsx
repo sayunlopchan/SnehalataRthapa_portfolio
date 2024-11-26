@@ -3,23 +3,20 @@ import { client } from '../../../lib/contentfulClient';
 import React from 'react';
 import Image from 'next/image';
 
-
-
-
 // Function to extract plain text from a Contentful rich-text document
 const extractTextFromMethod = (method) => {
-  if (!method || !method.content) return ''; // Return empty string if there's no content
+  if (!method || !method.content) return '';
 
   return method.content.map((node) => {
     if (node.nodeType === 'text') {
-      return node.value; // Extract the text value
+      return node.value;
     }
     // Recursively extract text from child nodes if any
     if (node.content) {
       return extractTextFromMethod(node);
     }
-    return ''; // Default empty string if no text is found
-  }).join(''); // Join the array into a single string
+    return '';
+  }).join('');
 };
 
 // Fetch the single blog post based on the slug
@@ -30,12 +27,13 @@ const fetchBlogPostBySlug = async (slug) => {
       'fields.slug': slug,
     });
 
-    return response.items[0]; // Return the first item (only one post should match)
+    return response.items[0];
   } catch (error) {
     console.error('Error fetching the blog post:', error);
-    return null; // Return null if there's an error
+    return null;
   }
 };
+
 // Await params to extract the slug
 const page = async ({ params }) => {
   const { slug } = await params;
@@ -45,7 +43,6 @@ const page = async ({ params }) => {
   if (!post) {
     return <div>Post not found</div>;
   }
-
 
   const { title, featuredImage, method } = post.fields;
   const featuredImageUrl = featuredImage?.fields?.file?.url;
@@ -87,10 +84,7 @@ const page = async ({ params }) => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default page
-
-
-
+export default page;
