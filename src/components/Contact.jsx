@@ -38,7 +38,7 @@ const Contact = forwardRef((props, ref) => {
       message: ''
     },
     validationSchema, // Apply validation schema here
-    onSubmit: (values, { resetForm, setSubmitting }) => {
+    onSubmit: (values, { resetForm }) => {
       // Use EmailJS to send the form data
       emailjs
         .send(
@@ -52,16 +52,13 @@ const Contact = forwardRef((props, ref) => {
           setDialogMessage('Message sent successfully!');
           setDialogType('success');
           setIsDialogOpen(true);
-          resetForm(); // Reset form fields after successful submission
-          setSubmitting(false); // Reset submitting state
+          resetForm(); // Reset form fields after submission
         })
         .catch((error) => {
           console.error('Email sending failed', error);
           setDialogMessage('Failed to send message. Please try again later.');
           setDialogType('error');
           setIsDialogOpen(true);
-          resetForm(); // Clear the form fields after error
-          setSubmitting(false); // Cancel submitting state (to stop "submitting..." text)
         });
     }
   });
@@ -145,7 +142,6 @@ const Contact = forwardRef((props, ref) => {
               >
                 {formik.isSubmitting ? 'Submitting...' : 'Submit'}
               </button>
-
             </div>
           </form>
           {formik.status && <p className="text-center text-lg mt-4">{formik.status}</p>}
