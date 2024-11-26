@@ -14,27 +14,31 @@ const page = () => {
           <li><Link href={'/contact'} className='hover-border'>Contact</Link></li>
         </ul>
       </nav>
-      {/* Navigation */}
+      {/* Navigation-end */}
 
       {/* blog design */}
-      <div className='p-10 space-y-5'>
+      <div className='p-10 space-y-3'>
 
-
+        {/* Blog title */}
         <div className='
         h-10 w-[200px]
         rounded-md
         bg-gray-300'>
           {/* title here */}
         </div>
+        {/* Blog title-end */}
+
+        {/* Blog Short summary */}
         <div className='
         h-8 w-full
         rounded-md
         bg-gray-300'>
           {/* title short summary type here */}
         </div>
+        {/* Blog Short summary-end */}
 
 
-
+        {/* Blog Thumbnail */}
         <div className='
         h-[200px] w-full
         sm:h-[260px]
@@ -52,13 +56,25 @@ const page = () => {
         '>
           {/* thumbnail image here */}
         </div>
+        {/* Blog Thumbnail-end */}
+
+        {/* Blog Starting */}
+        {/* starting tiitle */}
+        <div className='bg-gray-300 h-10 w-32 rounded-md' />
+        {/* starting tiitle-end */}
 
 
+        {/* starting title paragraph */}
+        <div className='bg-gray-300 h-3 w-full rounded-md' />
+        <div className='bg-gray-300 h-3 w-2/5 rounded-md' />
+        <div className='bg-gray-300 h-3 w-full rounded-md' />
+        {/* starting title paragraph */}
+        {/* Blog Starting-end */}
 
 
 
       </div>
-      {/* blog design */}
+      {/* blog design-end*/}
 
     </div>
   )
