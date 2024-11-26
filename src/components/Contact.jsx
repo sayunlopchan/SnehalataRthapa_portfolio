@@ -45,7 +45,7 @@ const Contact = forwardRef((props, ref) => {
           process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
           process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
           values,
-          process.env.NEXT_PUBLIC_EMAILJS_USER_ID
+          process.env.NEXT_PUBLIC_EMAILJS_USER_ID,
         )
         .then((response) => {
           console.log('Email sent successfully', response);

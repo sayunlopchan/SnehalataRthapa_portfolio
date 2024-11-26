@@ -25,6 +25,7 @@ const Page = () => {
       .min(10, 'Message must be at least 10 characters')
       .required('Message is required')
   });
+  console.log("env:", process.env.NEXT_PUBLIC_EMAILJS_USER_ID)
 
   const formik = useFormik({
     initialValues: {
@@ -40,7 +41,7 @@ const Page = () => {
           process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
           process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
           values,
-          process.env.NEXT_PUBLIC_EMAILJS_USER_ID
+          process.env.NEXT_PUBLIC_EMAILJS_USER_ID,
         )
         .then((response) => {
           console.log('Email sent successfully', response);
