@@ -1,44 +1,35 @@
-"use client";
+"use client"
 
 import React, { forwardRef } from 'react';
 import { useFormik } from 'formik';
-import emailjs from 'emailjs-com';
+import * as Yup from 'yup';
 import Image from 'next/image';
+import emailjs from 'emailjs-com';
 import image from '../assets/user-images/user-image-6.jpg';
+
+
 import Dialog from '../components/Dialog';
+
+
 
 const Contact = forwardRef((props, ref) => {
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
   const [dialogMessage, setDialogMessage] = React.useState('');
   const [dialogType, setDialogType] = React.useState('');
-  const [errors, setErrors] = React.useState({});
 
-  // Validation function
-  const validate = (values) => {
-    const errors = {};
-
-    if (!values.fullName) {
-      errors.fullName = 'Full name is required';
-    } else if (values.fullName.length < 3) {
-      errors.fullName = 'Full name must be at least 3 characters';
-    } else if (values.fullName.length > 30) {
-      errors.fullName = 'Full name must not exceed 30 characters';
-    }
-
-    if (!values.email) {
-      errors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(values.email)) {
-      errors.email = 'Invalid email address';
-    }
-
-    if (!values.message) {
-      errors.message = 'Message is required';
-    } else if (values.message.length < 10) {
-      errors.message = 'Message must be at least 10 characters';
-    }
-
-    return errors;
-  };
+  // Yup validation schema
+  const validationSchema = Yup.object({
+    fullName: Yup.string()
+      .min(3, 'Full name must be at least 3 characters')
+      .max(30, 'Full name must not exceed 30 characters')
+      .required('Full name is required'),
+    email: Yup.string()
+      .email('Invalid email address')
+      .required('Email is required'),
+    message: Yup.string()
+      .min(10, 'Message must be at least 10 characters')
+      .required('Message is required')
+  });
 
   const formik = useFormik({
     initialValues: {
@@ -46,7 +37,7 @@ const Contact = forwardRef((props, ref) => {
       email: '',
       message: ''
     },
-    validate, // Applying the manual validation
+    validationSchema, // Apply validation schema here
     onSubmit: (values, { resetForm }) => {
       // Use EmailJS to send the form data
       emailjs
@@ -106,8 +97,8 @@ const Contact = forwardRef((props, ref) => {
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-300 focus:outline-none"
                 placeholder="Enter your full name"
               />
-              {formik.touched.fullName && errors.fullName && (
-                <div className="text-red-500 text-sm">{errors.fullName}</div>
+              {formik.touched.fullName && formik.errors.fullName && (
+                <div className="text-red-500 text-sm">{formik.errors.fullName}</div>
               )}
             </label>
 
@@ -122,8 +113,8 @@ const Contact = forwardRef((props, ref) => {
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-300 focus:outline-none"
                 placeholder="Enter your email"
               />
-              {formik.touched.email && errors.email && (
-                <div className="text-red-500 text-sm">{errors.email}</div>
+              {formik.touched.email && formik.errors.email && (
+                <div className="text-red-500 text-sm">{formik.errors.email}</div>
               )}
             </label>
 
@@ -138,8 +129,8 @@ const Contact = forwardRef((props, ref) => {
                 placeholder="Enter your message"
                 rows="4"
               />
-              {formik.touched.message && errors.message && (
-                <div className="text-red-500 text-sm">{errors.message}</div>
+              {formik.touched.message && formik.errors.message && (
+                <div className="text-red-500 text-sm">{formik.errors.message}</div>
               )}
             </label>
 
