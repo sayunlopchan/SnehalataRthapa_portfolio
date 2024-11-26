@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import React from 'react';
 import { useFormik } from 'formik';
-import * as Yup from 'yup';  // Import Yup
+import * as Yup from 'yup';
 import emailjs from 'emailjs-com';
 import Dialog from '../../components/Dialog';
 
@@ -37,10 +37,10 @@ const Page = () => {
       // Use EmailJS to send the form data
       emailjs
         .send(
-          process.env.EMAILJS_SERVICE_ID,
-          process.env.EMAILJS_TEMPLATE_ID,
+          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
           values,
-          process.env.EMAILJS_USER_ID // Your EmailJS user ID
+          process.env.NEXT_PUBLIC_EMAILJS_USER_ID
         )
         .then((response) => {
           console.log('Email sent successfully', response);
