@@ -1,55 +1,10 @@
-import Link from 'next/link';
-import { client } from '../../../lib/contentfulClient';
-import React from 'react';
-import Image from 'next/image';
+import Link from 'next/link'
+import React from 'react'
 
-// Function to extract plain text from a Contentful rich-text document
-const extractTextFromMethod = (method) => {
-  if (!method || !method.content) return '';
-
-  return method.content.map((node) => {
-    if (node.nodeType === 'text') {
-      return node.value;
-    }
-    // Recursively extract text from child nodes if any
-    if (node.content) {
-      return extractTextFromMethod(node);
-    }
-    return '';
-  }).join('');
-};
-
-// Fetch the single blog post based on the slug
-const fetchBlogPostBySlug = async (slug) => {
-  try {
-    const response = await client.getEntries({
-      content_type: 'sayunPosts',
-      'fields.slug': slug,
-    });
-
-    return response.items[0];
-  } catch (error) {
-    console.error('Error fetching the blog post:', error);
-    return null;
-  }
-};
-
-// Await params to extract the slug
-const page = async ({ params }) => {
-  const { slug } = await params;
-
-  const post = await fetchBlogPostBySlug(slug);
-
-  if (!post) {
-    return <div>Post not found</div>;
-  }
-
-  const { title, featuredImage, method } = post.fields;
-  const featuredImageUrl = featuredImage?.fields?.file?.url;
-  const methodText = extractTextFromMethod(method);
-
+const page = () => {
   return (
     <div>
+      {/* Navigation */}
       <nav className="w-full flex justify-center items-center">
         <ul className="flex gap-x-5 mt-5" style={{ color: "var(--secondary-text)" }}>
           <li><Link href={'/'} className='hover-border'>Home</Link></li>
@@ -59,32 +14,54 @@ const page = async ({ params }) => {
           <li><Link href={'/contact'} className='hover-border'>Contact</Link></li>
         </ul>
       </nav>
+      {/* Navigation */}
 
-      <div className='p-10'>
-        <h1 className='text-2xl font-bold'>{title}</h1>
-        {featuredImageUrl && (
-          <div className='
+      {/* blog design */}
+      <div className='p-10 space-y-5'>
+
+
+        <div className='
+        h-10 w-[200px]
+        rounded-md
+        bg-gray-300'>
+          {/* title here */}
+        </div>
+        <div className='
+        h-8 w-full
+        rounded-md
+        bg-gray-300'>
+          {/* title short summary type here */}
+        </div>
+
+
+
+        <div className='
+        h-[200px] w-full
+        sm:h-[260px]
+        md:h-[340px] md:w-[600px]
+        lg:h-[390px] lg:w-[800px]
+
+
         mx-auto
-        h-[180px] w-full
-        sm:h-[240px] sm:w-[560px]
-        lg:h-[290px] lg:w-2/3
-        overflow-hidden'>
-            <Image
-              src={`https:${featuredImageUrl}`}
-              alt={title}
-              width={750}
-              height={400}
-              priority
-              className="object-cover h-auto w-auto mx-auto"
-            />
-          </div>
-        )}
-        {methodText && (
-          <p>{methodText}</p>
-        )}
-      </div>
-    </div>
-  );
-};
+        rounded-md
+        bg-gray-300
+        sm:bg-gray-400
+        md:bg-gray-500
+        lg:bg-gray-600
+        xl:bg-gray-700
+        '>
+          {/* thumbnail image here */}
+        </div>
 
-export default page;
+
+
+
+
+      </div>
+      {/* blog design */}
+
+    </div>
+  )
+}
+
+export default page

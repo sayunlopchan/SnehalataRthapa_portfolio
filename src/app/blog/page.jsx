@@ -1,24 +1,10 @@
+
 import Link from 'next/link'
-import React from 'react'
-import { client } from '../../lib/contentfulClient';
 import Image from 'next/image';
 
-// Fetch all blog posts
-const fetchBlogPosts = async () => {
-  try {
-    const response = await client.getEntries({
-      content_type: 'sayunPosts',
-    });
 
-    return response.items;
-  } catch (error) {
-    console.error('Error fetching blog posts:', error);
-    return [];
-  }
-};
+const page = () => {
 
-const page = async () => {
-  const blogPosts = await fetchBlogPosts();
 
   return (
     <div>
@@ -32,40 +18,38 @@ const page = async () => {
         </ul>
       </nav>
 
-      <div>
-        <h1>Blog Posts</h1>
-        <div className='grid grid-cols-1 lg:grid-cols-2 gap-5 place-items-center p-10'>
-          {blogPosts.map((post) => (
-            <Link href={`/blog/${post.fields.slug}`} key={post.sys.id}>
-              <div
-                className='
-                h-full w-full
-                sm:w-[460px]
-                lg:h-[280px]
-                xl:h-[300px] xl:w-full
-                bg-gray-400 rounded-md shadow-sm relative cursor-pointer transition-all hover:shadow-xl group overflow-hidden'
-              >
-                <Image
-                  src={`https:${post.fields.thumbnail.fields.file.url}`}
-                  alt={post.fields.title}
-                  width={750}
-                  height={400}
-                  priority
-                  className='object-cover transform group-hover:scale-105 transition-transform duration-300'
-                />
+      <div className='p-10'>
+        <h1 className='text-2xl font-bold p-2'>Blog Posts</h1>
+        <div className='grid grid-cols-1 gap-4'>
 
-                {/* Overlay with black gradient */}
-                <div className='absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent'></div>
 
-                {/* Title */}
-                <div className='absolute left-0 bottom-0 p-4 text-white'>
-                  <h3>{post.fields.title}</h3>
-                </div>
-              </div>
-            </Link>
-          ))}
+
+          <div className='w-full text-center my-20'>
+            <h2>No Blog Post!</h2>
+          </div>
+
+
+          {/* if data loading show this */}
+          <div className='space-y-2 my-5'>
+            <div className='h-5 w-40 bg-gray-300  rounded-md' />
+            <div className='bg-gray-300 h-10 lg:h-20 w-full lg:w-[70%] rounded-md space-y-2' />
+          </div>
+          {/* if data loading show this */}
+
+
+          {/* if data loaded show this */}
+          <div className='w-fit p-2 rounded-md border shadow-sm'>
+            <h1 className='font-bold text-lg'>Title Here</h1>
+            <p
+              className='text-sm'
+              style={{ color: "var(--secondary-text)" }}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, dicta.</p>
+          </div>
+          {/* if data loaded show this */}
+
         </div>
       </div>
+
+
     </div>
   );
 };
