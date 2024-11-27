@@ -23,7 +23,7 @@ const Navigation = () => {
         <Link href={'/contact'} className='hover-border-inline'>Contact</Link>
       </div>
 
-      <div className='order-2  md:hidden'>
+      <div className='order-2 md:hidden'>
         <div className='flex flex-col gap-1' onClick={handleOpen}>
           <span className={`transition-all duration-300  border-2 border-black w-9 bg-black ${openNav ? 'rotate-[-30deg] ' : ''}`}></span>
           <span className={`transition-all duration-300  border-2 border-black w-9 bg-black ${openNav ? 'rotate-[30deg]' : ''}`}></span>
@@ -32,7 +32,7 @@ const Navigation = () => {
       </div>
 
       <div
-        className={`order-1 md:hidden transition-all duration-300 w-full bg-b/50 backdrop-blur-lg p-5  ${openNav ? 'translate-y-0' : '-translate-y-20'
+        className={`order-1 md:hidden transition-all duration-300 w-full bg-b/50 backdrop-blur-lg p-5 ${openNav ? 'translate-y-0' : '-translate-y-20'
           }`}
       >
         <ul className='flex gap-x-2 text-sm' style={{ color: "var(--secondary-text)" }}>

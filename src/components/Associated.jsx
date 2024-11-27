@@ -8,26 +8,13 @@ import kiwabisClubOfRupandehi from "../assets/AssociatedClubs/Kiwanis Club of Ru
 
 const Associated = forwardRef((props, ref) => {
   return (
-    <div ref={ref} className="lg:h-[600px]  pb-10">
+    <div ref={ref} className="lg:h-[600px] pb-10">
       <h2 className="font-bold text-2xl my-5 uppercase">Associated</h2>
 
       <div
-        className="
-        flex flex-col flex-wrap 
-        lg:flex-row 
-        gap-5
-        xl:gap-16
-        justify-center items-center
-         "
-      >
+        className="flex flex-col flex-wrap lg:flex-row gap-5 xl:gap-16 justify-center items-center">
         <div
-          className="
-          size-[130px]
-          md:size-[180px]
-          flex justify-center items-center 
-          hover:border 
-        "
-        >
+          className="size-[130px] md:size-[180px] flex justify-center items-center hover:border">
           <Image
             src={rotaryClubLogo}
             alt="Sparkle kids academy"

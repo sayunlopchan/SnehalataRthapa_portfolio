@@ -2,11 +2,11 @@
 
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { usePathname } from 'next/navigation'; // Import usePathname
+import { usePathname } from 'next/navigation';
 
 const Nav = () => {
   const [openNav, setOpenNav] = useState(false);
-  const pathname = usePathname(); // Get the current path
+  const pathname = usePathname();
 
   const handleOpen = () => {
     setOpenNav((prev) => !prev);
@@ -17,7 +17,7 @@ const Nav = () => {
   };
 
   return (
-    <div className="flex justify-between h-10 items-center sticky top-0 z-50 py-8 lg:py-5 px-10">
+    <div className="flex justify-between h-10 items-center sticky top-0 z-50 py-8 lg:py-5 px-5">
       <div className="bg-transparent"></div>
 
       <div
