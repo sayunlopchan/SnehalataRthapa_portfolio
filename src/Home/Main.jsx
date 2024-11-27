@@ -16,7 +16,7 @@ const Main = ({ sectionsRef }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 2300);
     return () => clearTimeout(timer);
   }, []);
 

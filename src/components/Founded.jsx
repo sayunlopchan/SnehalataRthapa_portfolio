@@ -61,19 +61,19 @@ const Founded = forwardRef((props, ref) => {
         <ul
           className="text-base lg:text-lg"
           style={{ color: "var(--secondary-text)" }}>
-          {/* adding underline animating when hover using before after */}
-          <li>
-            <a href="">Sparkle kids academy</a>
+
+          <li className="hover-border">
+            <a href="https://sparklenepal.com/">Sparkle kids academy</a>
           </li>
-          <li>
+          <li className="hover-border">
             <a href="">Cultivate your canvas</a>
           </li>
-          <li>
+          <li className="hover-border">
             <a href="">Sneh yoga center</a>
           </li>
         </ul>
       </div>
-    </div>
+    </div >
   );
 });
 

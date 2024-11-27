@@ -1,36 +1,45 @@
-
+"use client"
 import Link from 'next/link'
-import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import Nav from '../../components/Nav';
 
+const Page = () => {
+  const [loading, setLoading] = useState(true)
 
-const page = () => {
-
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div>
-      <nav className="w-full flex justify-center items-center">
-        <ul className="flex gap-x-5 mt-5" style={{ color: "var(--secondary-text)" }}>
-          <li><Link href={'/'} className='hover-border'>Home</Link></li>
-          <li><Link href={'/about'} className='hover-border'>About</Link></li>
-          <li><Link href={'/gallery'} className='hover-border'>Gallery</Link></li>
-          <li><Link href={'/blog'} className='active hover-border'>Blog</Link></li>
-          <li><Link href={'/contact'} className='hover-border'>Contact</Link></li>
-        </ul>
-      </nav>
-
-      <div className='p-10'>
-        <h1 className='text-2xl font-bold p-2'>Blog Posts</h1>
+      <Nav />
+      <div className='px-5'>
+        <h1 className='text-2xl font-bold'>Blog Posts</h1>
         <div className='grid grid-cols-1 gap-4'>
-          <div className='w-full text-center my-20'>
-            <h2>No Blog Post!</h2>
-          </div>
-
+          {
+            loading ?
+              <div className='space-y-2 my-5'>
+                <div className='flex gap-3'>
+                  <div className='h-3 w-10 bg-gray-300 rounded-md animate-pulse' />
+                  <div className='h-3 w-10 bg-gray-300 rounded-md animate-pulse' />
+                </div>
+                <div className='h-5 w-40 bg-gray-300 rounded-md animate-pulse' />
+                <div className='bg-gray-300 h-10 lg:h-20 w-full lg:w-[70%] rounded-md space-y-2 animate-pulse' />
+              </div>
+              :
+              <div>
+                <div className='w-full text-center my-20'>
+                  <h2>No Blog Post!</h2>
+                </div>
+              </div>
+          }
         </div>
       </div>
-
-
     </div>
   );
 };
 
-export default page;
+export default Page;

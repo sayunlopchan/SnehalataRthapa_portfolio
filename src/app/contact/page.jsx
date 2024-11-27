@@ -6,6 +6,16 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import emailjs from 'emailjs-com';
 import Dialog from '../../components/Dialog';
+import Nav from '../../components/Nav';
+
+
+// icons
+import { FaFacebook } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa";
+import { FiPhone } from "react-icons/fi";
+import { MdEmail } from "react-icons/md";
 
 const Page = () => {
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
@@ -25,7 +35,6 @@ const Page = () => {
       .min(10, 'Message must be at least 10 characters')
       .required('Message is required')
   });
-  console.log("env:", process.env.NEXT_PUBLIC_EMAILJS_USER_ID)
 
   const formik = useFormik({
     initialValues: {
@@ -44,14 +53,13 @@ const Page = () => {
           process.env.NEXT_PUBLIC_EMAILJS_USER_ID,
         )
         .then((response) => {
-          console.log('Email sent successfully', response);
+
           setDialogMessage('Message sent successfully!');
           setDialogType('success');
           setIsDialogOpen(true);
           resetForm(); // Reset form fields after submission
         })
         .catch((error) => {
-          console.error('Email sending failed', error);
           setDialogMessage('Failed to send message. Please try again later.');
           setDialogType('error');
           setIsDialogOpen(true);
@@ -61,37 +69,51 @@ const Page = () => {
 
   return (
     <div>
-      <nav className="w-full flex justify-center items-center">
-        <ul className="flex gap-x-5 mt-5" style={{ color: "var(--secondary-text)" }}>
-          <li><Link href={'/'} className='hover-border'>Home</Link></li>
-          <li><Link href={'/about'} className='hover-border'>About</Link></li>
-          <li><Link href={'/gallery'} className='hover-border'>Gallery</Link></li>
-          <li><Link href={'/blog'} className='hover-border'>Blog</Link></li>
-          <li><Link href={'/contact'} className='active hover-border'>Contact</Link></li>
-        </ul>
-      </nav>
+      <Nav />
 
-      <div className="grid grid-cols-1 md:grid-cols-6 mt-20 space-y-10">
+      <div className="grid grid-cols-1 md:grid-cols-6  space-y-10">
         <section className="col-span-2 p-5 relative">
           <h2 className="font-bold text-2xl">Get in Contact</h2>
           {/* Links */}
           <ul style={{ color: "var(--secondary-text)" }}>
             <li className="hover-border">
-              <a href="tel:+9779843069722" target="_blank" rel="noopener noreferrer">Number</a>
+              <div className="flex items-center gap-x-2">
+                <FiPhone />
+                <a href="tel:+9779843069722" target="_blank" rel="noopener noreferrer">Number</a>
+              </div>
             </li>
             <li className="hover-border">
-              <a href="https://www.facebook.com/snehalata.raut.50" target="_blank" rel="noopener noreferrer">Facebook</a>
+              <div className="flex items-center gap-x-2">
+                <FaFacebook />
+                <a href="https://www.facebook.com/snehalata.raut.50" target="_blank" rel="noopener noreferrer">Facebook</a>
+              </div>
             </li>
             <li className="hover-border">
-              <a href="https://www.instagram.com/snehalata_888/" target="_blank" rel="noopener noreferrer">Instagram</a>
+              <div className="flex items-center gap-x-2">
+                <FaInstagram />
+                <a href="https://www.instagram.com/snehalata_888/" target="_blank" rel="noopener noreferrer">Instagram</a>
+              </div>
             </li>
             <li className="hover-border">
-              <a href="mailto:sneharthapa@domain.com" target="_blank" rel="noopener noreferrer">Email</a>
+              <div className="flex items-center gap-x-2">
+                <MdEmail />
+                <a href="mailto:sneharthapa@domain.com" target="_blank" rel="noopener noreferrer">Email</a>
+              </div>
             </li>
             <li className="hover-border">
-              <a href="https://www.linkedin.com/in/sneharthapa/" target="_blank" rel="noopener noreferrer">Linkedin</a>
+              <div className="flex items-center gap-x-2">
+                <FaLinkedinIn />
+                <a href="https://www.linkedin.com/in/sneharthapa/" target="_blank" rel="noopener noreferrer">Linkedin</a>
+              </div>
+            </li>
+            <li className="hover-border">
+              <div className="flex items-center gap-x-2">
+                <FaWhatsapp />
+                <a href="https://wa.me/9779843069722" target="_blank" rel="noopener noreferrer">Whatsapp</a>
+              </div>
             </li>
           </ul>
+
 
           {/* shapes */}
           <div className="size-[100px] md:size-[200px] border-2 absolute top-[30%] left-[30%] md:top-[15%] md:left-[10%] -z-10"></div>

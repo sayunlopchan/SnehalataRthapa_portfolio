@@ -174,4 +174,5 @@ body {
 /* why? because im making while still learning Next js lol might update later hahahah   */
 .active {
   color: black;
+  border-bottom: 2px solid red;
 }

@@ -81,16 +81,16 @@ const Associated = forwardRef((props, ref) => {
       <div className="my-5">
         <ul style={{ color: "var(--secondary-text)" }}>
           {/*adding underline animating when hover using before after*/}
-          <li>
+          <li className="hover-border">
             <a href="">Rotary Club</a>
           </li>
-          <li>
+          <li className="hover-border">
             <a href="">Toastmaster Club</a>
           </li>
-          <li>
+          <li className="hover-border">
             <a href="">Lions Club</a>
           </li>
-          <li>
+          <li className="hover-border">
             <a href=""> Kiwanis Club of Rupandehi Lumbini</a>
           </li>
         </ul>

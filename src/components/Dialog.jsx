@@ -4,7 +4,7 @@ const Dialog = ({ isOpen, onClose, message, type }) => {
   if (!isOpen) return null; // Don't render anything if the dialog is not open
 
   // Define styles for success and failure types
-  const dialogStyle = type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700';
+  const dialogStyle = type === 'success' ? 'bg-green-50 text-green-700' : 'bg-red-100 text-red-700';
 
   return (
     <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50">

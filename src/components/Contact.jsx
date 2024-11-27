@@ -48,14 +48,14 @@ const Contact = forwardRef((props, ref) => {
           process.env.NEXT_PUBLIC_EMAILJS_USER_ID,
         )
         .then((response) => {
-          console.log('Email sent successfully', response);
+
           setDialogMessage('Message sent successfully!');
           setDialogType('success');
           setIsDialogOpen(true);
           resetForm(); // Reset form fields after submission
         })
         .catch((error) => {
-          console.error('Email sending failed', error);
+
           setDialogMessage('Failed to send message. Please try again later.');
           setDialogType('error');
           setIsDialogOpen(true);
