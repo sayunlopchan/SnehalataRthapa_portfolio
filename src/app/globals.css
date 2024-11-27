@@ -171,8 +171,53 @@ body {
   width: 100%;
 }
 
-/* why? because im making while still learning Next js lol might update later hahahah   */
+/* active class */
 .active {
   color: black;
   border-bottom: 2px solid red;
+}
+
+.hover-effect {
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+/* water filling effect */
+.hover-effect-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 200px; /* Ensure it matches the size of your image and text */
+}
+
+.hover-effect {
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.hover-effect::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  transition: top 0.3s ease-out;
+  z-index: 0;
+}
+.hover-effect-wrapper:hover .hover-effect::before {
+  top: 0;
+}
+
+.hover-effect-wrapper:hover h2 {
+  color: white;
+}
+
+.hover-effect h2 {
+  position: relative;
+  z-index: 10;
+  color: black;
+  transition: color 0.3s ease-out;
 }
