@@ -1,66 +1,65 @@
-"use client"
+"use client";
 
-import React, { forwardRef } from 'react';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import Image from 'next/image';
-import emailjs from 'emailjs-com';
-import image from '../assets/user-images/user-image-6.jpg';
+import React, { forwardRef } from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import Image from "next/image";
+import image from "../assets/user-images/user-image-6.jpg";
 
-
-import Dialog from '../components/Dialog';
-
-
+import Dialog from "../components/Dialog";
+import { sendMessage } from "../constant/Route";
+import axios from "axios";
 
 const Contact = forwardRef((props, ref) => {
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
-  const [dialogMessage, setDialogMessage] = React.useState('');
-  const [dialogType, setDialogType] = React.useState('');
+  const [dialogMessage, setDialogMessage] = React.useState("");
+  const [dialogType, setDialogType] = React.useState("");
 
-  // Yup validation schema
+  // Validation schema
   const validationSchema = Yup.object({
     fullName: Yup.string()
-      .min(3, 'Full name must be at least 3 characters')
-      .max(30, 'Full name must not exceed 30 characters')
-      .required('Full name is required'),
+      .min(3, "Full name must be at least 3 characters")
+      .max(30, "Full name must not exceed 30 characters")
+      .required("Full name is required"),
     email: Yup.string()
-      .email('Invalid email address')
-      .required('Email is required'),
+      .email("Invalid email address")
+      .required("Email is required"),
     message: Yup.string()
-      .min(10, 'Message must be at least 10 characters')
-      .required('Message is required')
+      .min(10, "Message must be at least 10 characters")
+      .required("Message is required"),
   });
 
   const formik = useFormik({
     initialValues: {
-      fullName: '',
-      email: '',
-      message: ''
+      fullName: "",
+      email: "",
+      message: "",
     },
-    validationSchema, // Apply validation schema here
-    onSubmit: (values, { resetForm }) => {
-      // Use EmailJS to send the form data
-      emailjs
-        .send(
-          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-          values,
-          process.env.NEXT_PUBLIC_EMAILJS_USER_ID,
-        )
-        .then((response) => {
+    validationSchema,
+    onSubmit: async (values, { resetForm }) => {
 
-          setDialogMessage('Message sent successfully!');
-          setDialogType('success');
-          setIsDialogOpen(true);
-          resetForm(); // Reset form fields after submission
-        })
-        .catch((error) => {
 
-          setDialogMessage('Failed to send message. Please try again later.');
-          setDialogType('error');
+      try {
+        const response = await axios.post(sendMessage, { values });
+
+
+
+        if (response.status === 200) {
+          setDialogMessage("Thank you for getting in touch. Your message has been received and will be reviewed soon.");
+
+          setDialogType("success");
           setIsDialogOpen(true);
-        });
-    }
+          resetForm();
+        } else {
+          throw new Error("Failed to send message");
+        }
+      } catch (error) {
+        console.error("Submission Error:", error); // Log any errors
+        setDialogMessage("Failed to send message. Please try again.");
+        setDialogType("error");
+        setIsDialogOpen(true);
+      }
+    },
   });
 
   return (
@@ -70,16 +69,10 @@ const Contact = forwardRef((props, ref) => {
         <div className="col-span-2 order-2 lg:order-none py-20 mx-auto">
           <div
             className="mx-auto h-[260px] w-[300px] sm:h-[300px] sm:w-[450px] md:w-[400px] lg:w-[460px] lg:h-[300px] relative"
-            style={{ backgroundColor: 'var(--image-base-contact)' }}
+            style={{ backgroundColor: "var(--image-base-contact)" }}
           >
-            <div
-              className="absolute h-[200px] w-[300px] sm:h-[240px] sm:w-[400px] md:w-[380px] lg:h-[240px] lg:w-[410px] bg-gray-500 right-5 top-7 sm:right-20 md:right-10 lg:right-20"
-            >
-              <Image
-                src={image}
-                alt="snehalata r thapa image"
-                className="size-full object-cover"
-              />
+            <div className="absolute h-[200px] w-[300px] sm:h-[240px] sm:w-[400px] md:w-[380px] lg:h-[240px] lg:w-[410px] bg-gray-500 right-5 top-7 sm:right-20 md:right-10 lg:right-20">
+              <Image src={image} alt="user image" className="size-full object-cover" />
             </div>
           </div>
         </div>
@@ -134,29 +127,26 @@ const Contact = forwardRef((props, ref) => {
               )}
             </label>
 
-            <div className="flex gap-4">
-              <button
-                type="submit"
-                className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:ring focus:ring-blue-300 focus:outline-none font-medium"
-                disabled={formik.isSubmitting}
-              >
-                {formik.isSubmitting ? 'Submitting...' : 'Submit'}
-              </button>
-            </div>
+            <button
+              type="submit"
+              className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:ring focus:ring-blue-300 focus:outline-none font-medium"
+              disabled={formik.isSubmitting}
+            >
+              {formik.isSubmitting ? "Submitting..." : "Submit"}
+            </button>
           </form>
-          {formik.status && <p className="text-center text-lg mt-4">{formik.status}</p>}
+
+          <Dialog
+            isOpen={isDialogOpen}
+            onClose={() => setIsDialogOpen(false)}
+            message={dialogMessage}
+            type={dialogType}
+          />
         </div>
-        {/* Dialog Component for success or error message */}
-        <Dialog
-          isOpen={isDialogOpen}
-          onClose={() => setIsDialogOpen(false)}
-          message={dialogMessage}
-          type={dialogType}
-        />
       </div>
     </div>
   );
 });
 
-Contact.displayName = 'Contact';
+Contact.displayName = "Contact";
 export default Contact;

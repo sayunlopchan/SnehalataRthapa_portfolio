@@ -4,7 +4,6 @@ import Link from 'next/link';
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import emailjs from 'emailjs-com';
 import Dialog from '../../components/Dialog';
 import Nav from '../../components/Nav';
 
@@ -16,6 +15,8 @@ import { FaWhatsapp } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FiPhone } from "react-icons/fi";
 import { MdEmail } from "react-icons/md";
+import { sendMessage } from '../../constant/Route';
+import axios from 'axios';
 
 const Page = () => {
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
@@ -43,28 +44,30 @@ const Page = () => {
       message: ''
     },
     validationSchema, // Apply validation schema here
-    onSubmit: (values, { resetForm }) => {
-      // Use EmailJS to send the form data
-      emailjs
-        .send(
-          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-          values,
-          process.env.NEXT_PUBLIC_EMAILJS_USER_ID,
-        )
-        .then((response) => {
+    onSubmit: async (values, { resetForm }) => {
+      console.log("Form Submitted Data:", values); // Log submitted form data
 
-          setDialogMessage('Message sent successfully!');
-          setDialogType('success');
+      try {
+        const response = await axios.post(sendMessage, { values });
+
+        console.log("Response from Server:", response.data); // Log server response
+
+        if (response.status === 200) {
+          setDialogMessage("Thank you for getting in touch. Your message has been received and will be reviewed soon.");
+          setDialogType("success");
           setIsDialogOpen(true);
-          resetForm(); // Reset form fields after submission
-        })
-        .catch((error) => {
-          setDialogMessage('Failed to send message. Please try again later.');
-          setDialogType('error');
-          setIsDialogOpen(true);
-        });
-    }
+          resetForm();
+        } else {
+          throw new Error("Failed to send message");
+        }
+      } catch (error) {
+        console.error("Submission Error:", error); // Log any errors
+        setDialogMessage("Failed to send message. Please try again.");
+        setDialogType("error");
+        setIsDialogOpen(true);
+      }
+    },
+
   });
 
   return (

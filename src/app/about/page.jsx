@@ -13,13 +13,13 @@ import Nav from "../../components/Nav";
 
 const Achivements = [
   {
-    title: 'Title',
+    title: 'Mrs. Nepal Bhairahawa',
     date: '2019/00/00',
     text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et quis adipisci accusantium eum placeat repellendus ut voluptatibus, nobis cum voluptates ducimus omnis nam maxime quibusdam molestiae doloribus nostrum hic suscipit deleniti ab debitis! A corporis consequatur minima blanditiis nulla dicta ratione iusto, vel nisi natus sint nostrum itaque, vero incidunt ducimus placeat recusandae nesciunt! Vitae totam earum nisi magni, voluptas est soluta maxime facere eum quis tempore praesentium aliquid repudiandae ut officia illo odio quos quod! Doloremque odio dolore facilis.',
     image: aboutImg
   },
   {
-    title: 'Title',
+    title: 'Mrs. Nepal International 2nd runner-up',
     date: '2019/00/00',
     text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et quis adipisci accusantium eum placeat repellendus ut voluptatibus, nobis cum voluptates ducimus omnis nam maxime quibusdam molestiae doloribus nostrum hic suscipit deleniti ab debitis! A corporis consequatur minima blanditiis nulla dicta ratione iusto, vel nisi natus sint nostrum itaque, vero incidunt ducimus placeat recusandae nesciunt! Vitae totam earum nisi magni, voluptas est soluta maxime facere eum quis tempore praesentium aliquid repudiandae ut officia illo odio quos quod! Doloremque odio dolore facilis.',
     image: aboutImg1
