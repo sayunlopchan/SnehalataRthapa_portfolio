@@ -12,7 +12,7 @@ const Navigation = () => {
 
 
   return (
-    <div className='flex justify-between h-10 items-center sticky top-0 z-50 py-8 lg:py-5 '>
+    <div className='flex justify-between h-10 items-center sticky top-0 z-50 py-8 lg:py-4'>
 
       <div className='bg-transparent'></div>
 

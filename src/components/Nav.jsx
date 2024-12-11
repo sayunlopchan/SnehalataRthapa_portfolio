@@ -17,12 +17,10 @@ const Nav = () => {
   };
 
   return (
-    <div className="flex justify-between h-10 items-center sticky top-0 z-50 py-8 lg:py-5 px-5">
+    <div className="flex justify-between h-10 items-center sticky top-0 z-50 py-8 lg:py-5 px-10">
       <div className="bg-transparent"></div>
 
-      <div
-        className="space-x-4 max-md:hidden bg-b/50 backdrop-blur-lg p-4"
-        style={{ color: 'var(--secondary-text)' }}
+      <div className="space-x-4 max-md:hidden bg-b/50 backdrop-blur-lg p-4" style={{ color: 'var(--secondary-text)' }}
       >
         <Link href="/" className={getLinkClassName('/')}>Home</Link>
         <Link href="/about" className={getLinkClassName('/about')}>About</Link>
